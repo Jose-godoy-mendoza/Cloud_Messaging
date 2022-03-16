@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         public TextView senderMessageText, receiverMessageText;
         public CircleImageView receiverProfileImage;
-
+        public ImageView messageSenderPicture, messageReceiverPicture;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -43,6 +44,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             senderMessageText = (TextView) itemView.findViewById(R.id.sender_message_text);
             receiverMessageText = (TextView) itemView.findViewById(R.id.received_message_text);
             receiverProfileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_image);
+            messageReceiverPicture=itemView.findViewById(R.id.message_receiver_image_view);
+            messageSenderPicture=itemView.findViewById(R.id.message_sender_image_view);
         }
 
     }
@@ -79,9 +82,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             }
         });
+
+
+
+        holder.receiverMessageText.setVisibility(View.GONE);
+        holder.receiverProfileImage.setVisibility(View.GONE);
+        holder.senderMessageText.setVisibility(View.GONE);
+        holder.messageSenderPicture.setVisibility(View.GONE);
+        holder.messageReceiverPicture.setVisibility(View.GONE);
+
         if (fromMessageType.equals("text")) {
-            holder.receiverMessageText.setVisibility(View.INVISIBLE);
-            holder.receiverProfileImage.setVisibility(View.INVISIBLE);
 
             if (fromUserId.equals(messageSenderId)) {
                 holder.senderMessageText.setBackgroundResource(R.drawable.sender_messages_layout);

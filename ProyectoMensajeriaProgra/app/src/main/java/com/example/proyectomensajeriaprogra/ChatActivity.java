@@ -66,7 +66,7 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView userMessagesList;
 
     private String check="", myurl="";
-    private StorageTask uploadTask;
+    private StorageTask uploadTask;.
     private Uri fileUri;
     private ProgressDialog loadingBar;
 
